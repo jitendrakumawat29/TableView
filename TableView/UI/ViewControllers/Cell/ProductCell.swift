@@ -2,7 +2,7 @@
 //  ProductCell.swift
 //  TableViewDemo
 //
-//  Created by Jitendra Kumar on 21/07/20.
+//  Created by Jitendra Kumar on 17/07/20.
 //  Copyright © 2020 Jitendra Kumar. All rights reserved.
 //
 
@@ -11,11 +11,22 @@ import SDWebImage
 
 class ProductCell : UITableViewCell {
     
+    var product : Product? {
+        didSet {
+            // update the imageview on main thread once it has been downloaded from server
+            DispatchQueue.main.async {
+                self.productImage.sd_setImage(with: URL(string: self.product?.imageURL ?? ""), placeholderImage: UIImage(named: "applelogo"))
+            }
+            self.productNameLabel.text = self.product?.title
+            self.productDescriptionLabel.text = self.product?.description
+        }
+    }
     
     //MARK: declare and initialse properties
     private let productNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
+        lbl.font = UIFont.Medium(18)
         lbl.textAlignment = .left
         return lbl
     }()
@@ -24,6 +35,7 @@ class ProductCell : UITableViewCell {
     private let productDescriptionLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
+        lbl.font = UIFont.regular(14)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
         return lbl
