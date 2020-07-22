@@ -40,7 +40,6 @@ class ViewController: UIViewController {
         
       self.tableView.isHidden = true
       self.tableView.dataSource = self
-      self.tableView.delegate = self
       
       // set tableview height to automatic
       self.tableView.rowHeight = UITableView.automaticDimension
@@ -86,7 +85,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: Table view delegate
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProductCell
       cell.selectionStyle = .none
@@ -99,10 +98,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return productVM.products.count
   }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return UITableView.automaticDimension
-    }
-
 }
 
 // MARK: API response
