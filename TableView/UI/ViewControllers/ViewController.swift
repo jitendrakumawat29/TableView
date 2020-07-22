@@ -105,6 +105,7 @@ extension ViewController: APIResponseProtocol {
     func errorHandler(error: ProductAPIError) {
         IndicatorView.shared.hideProgressView()
         self.refreshControl.endRefreshing()
+        UIAlertController.showAlertMessage(withTitle: "Error", withMessage: error.localizedDescription)
     }
     
     func didReceiveResponse() {

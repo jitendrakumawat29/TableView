@@ -32,3 +32,17 @@ extension UIFont {
         return UIFont.init(name: "Roboto-Medium", size: size)!
     }
 }
+
+extension  UIViewController {
+
+    class func showAlertMessage(withTitle title: String, withMessage message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+        })
+        alert.addAction(ok)
+        DispatchQueue.main.async(execute: {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        })
+    }
+}

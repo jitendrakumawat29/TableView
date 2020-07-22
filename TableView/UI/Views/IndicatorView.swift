@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-/// A simple progress view
-@available(iOS 11.0, *)
-@available(iOS 11.0, *)
-@available(iOS 11.0, *)
-@available(iOS 11.0, *)
-
 class IndicatorView {
     
     // MARK: Class Properties
