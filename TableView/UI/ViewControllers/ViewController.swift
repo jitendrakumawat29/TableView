@@ -34,11 +34,7 @@ class ViewController: UIViewController {
     
     // Add table view and it's Constraints to main view
     func setupTableView() {
-       if #available(iOS 11.0, *) {
-        IndicatorView.shared.showProgressView()
-       } else {
-            // Fallback on earlier versions
-       }
+       IndicatorView.shared.showProgressView()
       // call the api to fetch all the products from server
       self.productVM.fetchProducts()
         
@@ -112,30 +108,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: API response
 extension ViewController: APIResponseProtocol {
     func errorHandler(error: ProductAPIError) {
-        if #available(iOS 11.0, *) {
-            IndicatorView.shared.hideProgressView()
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        DispatchQueue.main.async {
-            self.refreshControl.endRefreshing()
-        }
+        IndicatorView.shared.hideProgressView()
+        self.refreshControl.endRefreshing()
     }
     
     func didReceiveResponse() {
-        if #available(iOS 11.0, *) {
-            IndicatorView.shared.hideProgressView()
-        } else {
-            // Fallback on earlier versions
-        }
-        // Once data has pulled from server then update table view and display to view
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.topItem?.title = self.productVM.title
-            self.tableView.isHidden = false
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-        }
+        IndicatorView.shared.hideProgressView()
+        self.navigationController?.navigationBar.topItem?.title = self.productVM.title
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
 }
 
