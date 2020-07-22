@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  TableViewDemo
+//  TableView
 //
 //  Created by Jitendra Kumar on 21/07/20.
 //  Copyright © 2020 Jitendra Kumar. All rights reserved.

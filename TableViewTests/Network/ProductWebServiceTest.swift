@@ -1,13 +1,13 @@
 //
 //  ProductWebServiceTest.swift
-//  TableViewDemoTests
+//  TableViewTests
 //
-//  Created by Jitendra Kumar on 18/07/20.
+//  Created by Jitendra Kumar on 21/07/20.
 //  Copyright © 2020 Jitendra Kumar. All rights reserved.
 //
 
 import XCTest
-@testable import TableViewDemo
+@testable import TableView
 
 class ProductWebServiceTest: XCTestCase {
     

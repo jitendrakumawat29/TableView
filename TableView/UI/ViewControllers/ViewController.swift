@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  TableViewDemo
 //
-//  Created by Jitendra Kumar on 17/07/20.
+//  Created by Jitendra Kumar on 21/07/20.
 //  Copyright © 2020 Jitendra Kumar. All rights reserved.
 //
 
@@ -40,12 +40,13 @@ class ViewController: UIViewController {
             // Fallback on earlier versions
        }
       // call the api to fetch all the products from server
-      productVM.fetchProducts()
+      self.productVM.fetchProducts()
         
       self.tableView.isHidden = true
       self.tableView.dataSource = self
       self.tableView.delegate = self
       
+      // set tableview height to automatic
       self.tableView.rowHeight = UITableView.automaticDimension
       self.tableView.estimatedRowHeight = 100
       self.tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)
@@ -84,7 +85,7 @@ class ViewController: UIViewController {
     }
     @objc private func refreshProductData(_ sender: Any) {
         // call the api to fetch all the latest products from server
-        productVM.fetchProducts()
+        self.productVM.fetchProducts()
     }
 }
 
@@ -93,7 +94,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProductCell
       cell.selectionStyle = .none
-      let currentLastItem = productVM.products[indexPath.row]
+      let currentLastItem = self.productVM.products[indexPath.row]
       cell.product = currentLastItem
     
       return cell
