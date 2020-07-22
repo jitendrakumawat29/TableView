@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		65EFD21BACF95F6A84F175F5 /* Pods_TableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48254ED03CAAD1DC663C2567 /* Pods_TableView.framework */; };
-		7D4FA22024C82D4200EF0337 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FA21924C82D4200EF0337 /* WebService.swift */; };
-		7D4FA22124C82D4200EF0337 /* ProductAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FA21B24C82D4200EF0337 /* ProductAPIError.swift */; };
-		7D4FA22224C82D4200EF0337 /* ProductConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FA21C24C82D4200EF0337 /* ProductConstant.swift */; };
-		7D4FA22324C82D4200EF0337 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FA21D24C82D4200EF0337 /* Product.swift */; };
-		7D4FA22424C82D4200EF0337 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FA21F24C82D4200EF0337 /* ProductViewModel.swift */; };
+		7D79B9C024C8317000F953EA /* ProductConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79B9BD24C8317000F953EA /* ProductConstant.swift */; };
+		7D79B9C124C8317000F953EA /* ProductAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79B9BE24C8317000F953EA /* ProductAPIError.swift */; };
+		7D79B9C224C8317000F953EA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79B9BF24C8317000F953EA /* Product.swift */; };
+		7D79B9C424C8317900F953EA /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79B9C324C8317900F953EA /* WebService.swift */; };
+		7D79B9C624C8318300F953EA /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79B9C524C8318300F953EA /* ProductViewModel.swift */; };
 		7DA1FC3724C7609300BE4903 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FC2124C7609300BE4903 /* Roboto-Medium.ttf */; };
 		7DA1FC3824C7609300BE4903 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FC2224C7609300BE4903 /* Roboto-Light.ttf */; };
 		7DA1FC3924C7609300BE4903 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FC2324C7609300BE4903 /* Roboto-Regular.ttf */; };
@@ -45,11 +45,11 @@
 		0917D70305329E432FE65DA9 /* Pods_TableViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48254ED03CAAD1DC663C2567 /* Pods_TableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7393840B23F7297F29CB8E45 /* Pods-TableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView.release.xcconfig"; path = "Target Support Files/Pods-TableView/Pods-TableView.release.xcconfig"; sourceTree = "<group>"; };
-		7D4FA21924C82D4200EF0337 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
-		7D4FA21B24C82D4200EF0337 /* ProductAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductAPIError.swift; sourceTree = "<group>"; };
-		7D4FA21C24C82D4200EF0337 /* ProductConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductConstant.swift; sourceTree = "<group>"; };
-		7D4FA21D24C82D4200EF0337 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		7D4FA21F24C82D4200EF0337 /* ProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		7D79B9BD24C8317000F953EA /* ProductConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductConstant.swift; sourceTree = "<group>"; };
+		7D79B9BE24C8317000F953EA /* ProductAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductAPIError.swift; sourceTree = "<group>"; };
+		7D79B9BF24C8317000F953EA /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		7D79B9C324C8317900F953EA /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		7D79B9C524C8318300F953EA /* ProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		7DA1FC2124C7609300BE4903 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		7DA1FC2224C7609300BE4903 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		7DA1FC2324C7609300BE4903 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -105,33 +105,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		7D4FA21824C82D4200EF0337 /* Network */ = {
+		7D79B9BA24C8312A00F953EA /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7D4FA21924C82D4200EF0337 /* WebService.swift */,
+				7D79B9C324C8317900F953EA /* WebService.swift */,
 			);
-			name = Network;
-			path = ../../Network;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		7D4FA21A24C82D4200EF0337 /* Model */ = {
+		7D79B9BB24C8315A00F953EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7D4FA21B24C82D4200EF0337 /* ProductAPIError.swift */,
-				7D4FA21C24C82D4200EF0337 /* ProductConstant.swift */,
-				7D4FA21D24C82D4200EF0337 /* Product.swift */,
+				7D79B9BF24C8317000F953EA /* Product.swift */,
+				7D79B9BE24C8317000F953EA /* ProductAPIError.swift */,
+				7D79B9BD24C8317000F953EA /* ProductConstant.swift */,
 			);
-			name = Model;
-			path = ../../Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		7D4FA21E24C82D4200EF0337 /* ViewModel */ = {
+		7D79B9BC24C8316000F953EA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7D4FA21F24C82D4200EF0337 /* ProductViewModel.swift */,
+				7D79B9C524C8318300F953EA /* ProductViewModel.swift */,
 			);
-			name = ViewModel;
-			path = ../../ViewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7DA1FC1F24C7609300BE4903 /* Resources */ = {
@@ -237,9 +234,9 @@
 			isa = PBXGroup;
 			children = (
 				7DA2C1CE24C74B5200E687D0 /* AppDelegate.swift */,
-				7D4FA21A24C82D4200EF0337 /* Model */,
-				7D4FA21824C82D4200EF0337 /* Network */,
-				7D4FA21E24C82D4200EF0337 /* ViewModel */,
+				7D79B9BC24C8316000F953EA /* ViewModel */,
+				7D79B9BB24C8315A00F953EA /* Model */,
+				7D79B9BA24C8312A00F953EA /* Network */,
 				7DA1FC3524C7609300BE4903 /* Extensions */,
 				7DA1FC1F24C7609300BE4903 /* Resources */,
 				7DA1FC2E24C7609300BE4903 /* UI */,
@@ -441,15 +438,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D4FA22024C82D4200EF0337 /* WebService.swift in Sources */,
+				7D79B9C424C8317900F953EA /* WebService.swift in Sources */,
 				7DA1FC4324C7609300BE4903 /* IndicatorView.swift in Sources */,
-				7D4FA22324C82D4200EF0337 /* Product.swift in Sources */,
+				7D79B9C224C8317000F953EA /* Product.swift in Sources */,
 				7DA1FC4424C7609300BE4903 /* Extensions.swift in Sources */,
-				7D4FA22424C82D4200EF0337 /* ProductViewModel.swift in Sources */,
-				7D4FA22224C82D4200EF0337 /* ProductConstant.swift in Sources */,
+				7D79B9C624C8318300F953EA /* ProductViewModel.swift in Sources */,
 				7DA1FC4124C7609300BE4903 /* ViewController.swift in Sources */,
+				7D79B9C024C8317000F953EA /* ProductConstant.swift in Sources */,
 				7DA1FC4224C7609300BE4903 /* ProductCell.swift in Sources */,
-				7D4FA22124C82D4200EF0337 /* ProductAPIError.swift in Sources */,
+				7D79B9C124C8317000F953EA /* ProductAPIError.swift in Sources */,
 				7DA2C1CF24C74B5200E687D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

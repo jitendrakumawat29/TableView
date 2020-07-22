@@ -1,15 +1,14 @@
 //
 //  ProductViewModel.swift
-//  TableViewDemo
-//
-//  Created by Jitendra Kumar on 18/07/20.
+//  TableView
+//  Created by Jitendra Kumar on 21/07/20.
 //  Copyright © 2020 Jitendra Kumar. All rights reserved.
 //
 
 import Foundation
 
 class ProductViewModel {
-    //MARK: class properties
+    //MARK: class properties 
     var productResult: ProductResult?
     var productWebService: WebService!
     weak var delegate: APIResponseProtocol?
