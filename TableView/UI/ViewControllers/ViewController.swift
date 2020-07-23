@@ -1,10 +1,8 @@
-//
 //  ViewController.swift
 //  TableViewDemo
 //
 //  Created by Jitendra Kumar on 21/07/20.
 //  Copyright © 2020 Jitendra Kumar. All rights reserved.
-//
 
 import UIKit
 
@@ -18,7 +16,6 @@ class ViewController: UIViewController {
 
     // MARK: Class Properties
     let tableView = UITableView()
-    var safeArea: UILayoutGuide!
     let cellId = "cellId"
     var productVM = ProductViewModel()
     private let refreshControl = UIRefreshControl()
@@ -27,7 +24,6 @@ class ViewController: UIViewController {
     override func loadView() {
       super.loadView()
       view.backgroundColor = .white
-      self.safeArea = view.layoutMarginsGuide
       self.setupTableView()
       self.productVM.delegate = self
     }
@@ -66,17 +62,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set navigation bar title and tint color
-        self.navigationController?.navigationBar.barTintColor = UIColor.appThemeColor
-        self.navigationController?.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.white,
-         NSAttributedString.Key.font: UIFont.bold(18)]
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
     }
     @objc private func refreshProductData(_ sender: Any) {
         // call the api to fetch all the latest products from server
@@ -91,13 +76,12 @@ extension ViewController: UITableViewDataSource {
       cell.selectionStyle = .none
       let currentLastItem = self.productVM.products[indexPath.row]
       cell.product = currentLastItem
-    
       return cell
   }
-  
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return productVM.products.count
   }
+    
 }
 
 // MARK: API response

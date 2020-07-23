@@ -38,18 +38,18 @@ class ProductViewModel {
     
     // call the API to fetch data from server
      func fetchProducts() {
-        self.productWebService.getProducts() { (productResult, error) in
+        self.productWebService.getProducts() { [weak self] (productResult, error) in
             if let error = error { // failure condition
                 DispatchQueue.main.async {
-                    self.delegate?.errorHandler(error: error)
+                    self?.delegate?.errorHandler(error: error)
                 }
                 return
             }
             
             if let productResult = productResult { // success block
                 DispatchQueue.main.async {
-                    self.productResult = productResult
-                    self.delegate?.didReceiveResponse()
+                    self?.productResult = productResult
+                    self?.delegate?.didReceiveResponse()
                 }
             }
         }
