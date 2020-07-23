@@ -14,90 +14,94 @@ protocol APIResponseProtocol:class {
 
 class ViewController: UIViewController {
 
-    // MARK: Class Properties
-    let tableView = UITableView()
-    let cellId = "cellId"
-    var productVM = ProductViewModel()
-    private let refreshControl = UIRefreshControl()
+    // Cell Reuse Identifier
+    private static let cellIdentifier = "cellId"
+    // View Model
+    private lazy var productVM = ProductViewModel()
+
+    // Initilisation tableview with estamated height for cell
+    private var tableView: UITableView = {
+        let tableview = UITableView()
+        tableview.isHidden = true
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        tableview.backgroundColor = .white
+        tableview.estimatedRowHeight = 100
+        tableview.rowHeight = UITableView.automaticDimension
+        tableview.allowsSelection = false
+        tableview.register(ProductCell.self, forCellReuseIdentifier: cellIdentifier)
+        return tableview
+    }()
 
     // MARK: View Controller Cycle
-    override func loadView() {
-      super.loadView()
-      view.backgroundColor = .white
-      self.setupTableView()
-      self.productVM.delegate = self
-    }
-    
-    // Add table view and it's Constraints to main view
-    func setupTableView() {
-       IndicatorView.shared.showProgressView()
-      // call the api to fetch all the products from server
-      self.productVM.fetchProducts()
-        
-      self.tableView.isHidden = true
-      self.tableView.dataSource = self
-      
-      // set tableview height to automatic
-      self.tableView.rowHeight = UITableView.automaticDimension
-      self.tableView.estimatedRowHeight = 100
-      self.tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)
-
-      // Set table view constraint
-      view.addSubview(self.tableView)
-      self.tableView.translatesAutoresizingMaskIntoConstraints = false
-      self.tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-      self.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-      self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-      self.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-      // add pull to refresh to tableview and add target action
-      self.tableView.addSubview(refreshControl)
-      self.refreshControl.tintColor = UIColor.appThemeColor
-      let string = "Fetching Product Data.."
-      let stringAttribute = [NSAttributedString.Key.foregroundColor: UIColor.appThemeColor, NSAttributedString.Key.font: UIFont.regular(16)]
-      let atributeString = NSAttributedString(string: string, attributes: stringAttribute)
-      self.refreshControl.attributedTitle = atributeString
-      self.refreshControl.addTarget(self, action: #selector(refreshProductData(_:)), for: .valueChanged)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Product POC"
+        self.productVM.delegate = self
+        self.setupUI()
     }
-    @objc private func refreshProductData(_ sender: Any) {
+
+    // Add table view and it's Constraints to main view
+    private func setupUI() {
+        view.addSubview(tableView) // Adding tableview in controller view
+        setTableLayout()
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        // Add Refresh Control to Table View
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        tableView.refreshControl?.tintColor = UIColor.appThemeColor
+        // call the api to fetch all the products from server
+        self.productVM.fetchProducts()
+        IndicatorView.shared.showProgressView()
+    }
+
+    // Adding autolayout constraints on table View
+    private func setTableLayout() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+
+    @objc private func refreshAction(_ sender: Any) {
         // call the api to fetch all the latest products from server
         self.productVM.fetchProducts()
     }
 }
 
-// MARK: Table view delegate
+// MARK: Table View Data Source
 extension ViewController: UITableViewDataSource {
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProductCell
-      cell.selectionStyle = .none
-      let currentLastItem = self.productVM.products[indexPath.row]
-      cell.product = currentLastItem
-      return cell
-  }
-   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return productVM.products.count
-  }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.cellIdentifier, for: indexPath) as? ProductCell else { return UITableViewCell() }
+        let currentLastItem = self.productVM.product(at: indexPath.row)
+        cell.product = currentLastItem
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return productVM.numberOfProducts()
+    }
 }
 
 // MARK: API response
 extension ViewController: APIResponseProtocol {
     func errorHandler(error: ProductAPIError) {
-        IndicatorView.shared.hideProgressView()
-        self.refreshControl.endRefreshing()
-        UIAlertController.showAlertMessage(withTitle: "Error", withMessage: error.localizedDescription)
+        DispatchQueue.main.async {
+            IndicatorView.shared.hideProgressView()
+            self.tableView.refreshControl?.endRefreshing()
+            UIAlertController.showAlertMessage(withTitle: "Error", withMessage: error.localizedDescription)
+        }
     }
-    
+
     func didReceiveResponse() {
-        IndicatorView.shared.hideProgressView()
-        self.navigationController?.navigationBar.topItem?.title = self.productVM.title
-        self.tableView.isHidden = false
-        self.tableView.reloadData()
-        self.refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            IndicatorView.shared.hideProgressView()
+            self.navigationController?.navigationBar.topItem?.title = self.productVM.getTitle()
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
 

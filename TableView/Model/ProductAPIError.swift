@@ -8,11 +8,12 @@
 import Foundation
 
 enum ProductAPIError: LocalizedError, Equatable {
-    
+    // MARK: enum cases
     case invalidResponseModel
     case invalidRequestURLString
     case failedRequest(description: String)
     
+    // failedRequest with different cases
     var errorDescription: String? {
         switch self {
         case .failedRequest(let description):

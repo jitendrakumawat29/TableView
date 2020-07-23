@@ -8,49 +8,46 @@
 import Foundation
 
 class ProductViewModel {
-    //MARK: class properties 
-    var productResult: ProductResult?
-    var productWebService: WebService!
+    //MARK: class properties
+    private var productResult: ProductResult?
+    private var productWebService: WebService
     weak var delegate: APIResponseProtocol?
-    
+
     init() {
         // initialise the webservice instance
         self.productWebService = WebService(urlString: ProductConstant.productURLString)
     }
-    
-    var title: String {
-        if let title = self.productResult?.title {
-            return title
+
+    // Get Product for given index
+    func product(at index: Int) -> Product? {
+        let product  = productResult?.products?.filter { product in
+            return (product.title != nil || product.description != nil)
         }
-        else {
-            return ""
-        }
+        return product?[index]
     }
-    
-    var products: [Product] {
-        if let products = self.productResult?.products {
-            return products
-        }
-        else {
-            return [Product]()
-        }
+
+    // Number of Products
+    func numberOfProducts() -> Int {
+        let items  = productResult?.products?.filter { product in
+            return (product.title != nil || product.description != nil) }
+        return items?.count ?? 0
     }
-    
+
+    // Title of response
+    func getTitle() -> String {
+        return self.productResult?.title ?? ""
+    }
+
     // call the API to fetch data from server
-     func fetchProducts() {
+    func fetchProducts() {
         self.productWebService.getProducts() { [weak self] (productResult, error) in
+            guard let this = self else { return }
             if let error = error { // failure condition
-                DispatchQueue.main.async {
-                    self?.delegate?.errorHandler(error: error)
-                }
+                this.delegate?.errorHandler(error: error)
                 return
-            }
-            
-            if let productResult = productResult { // success block
-                DispatchQueue.main.async {
-                    self?.productResult = productResult
-                    self?.delegate?.didReceiveResponse()
-                }
+            } else {
+                this.productResult = productResult
+                this.delegate?.didReceiveResponse()
             }
         }
     }
