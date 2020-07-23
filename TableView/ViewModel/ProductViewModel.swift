@@ -44,7 +44,6 @@ class ProductViewModel {
             guard let this = self else { return }
             if let error = error { // failure condition
                 this.delegate?.errorHandler(error: error)
-                return
             } else {
                 this.productResult = productResult
                 this.delegate?.didReceiveResponse()
