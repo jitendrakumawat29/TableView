@@ -18,8 +18,10 @@ enum ProductAPIError: LocalizedError, Equatable {
         switch self {
         case .failedRequest(let description):
             return description
-        case .invalidResponseModel, .invalidRequestURLString:
-            return ""
+        case .invalidResponseModel:
+            return "Invalid response object"
+        case .invalidRequestURLString:
+            return "Invalid URL string"
         }
     }
     

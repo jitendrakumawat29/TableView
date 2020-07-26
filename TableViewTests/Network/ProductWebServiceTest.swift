@@ -10,7 +10,6 @@ import XCTest
 @testable import TableView
 
 class ProductWebServiceTest: XCTestCase {
-    
     var sut:WebService!
     
     // Set up your properties

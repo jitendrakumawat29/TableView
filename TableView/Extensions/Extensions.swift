@@ -31,9 +31,16 @@ extension UIFont {
     static public func Medium(_ size:CGFloat = 16) -> UIFont {
         return UIFont.init(name: "Roboto-Medium", size: size)!
     }
+    
+    static public func TitleFont() -> UIFont {
+        return UIFont.init(name: "Roboto-Medium", size: UIDevice.current.userInterfaceIdiom == .pad ? FontSize.iPadTitle.rawValue : FontSize.iPhoneTitle.rawValue)!
+    }
+    static public func DescriptionFont() -> UIFont {
+        return UIFont.init(name: "Roboto-Regular", size: UIDevice.current.userInterfaceIdiom == .pad ? FontSize.iPadDescription.rawValue : FontSize.iPhoneDescription.rawValue)!
+    }
 }
 
-extension  UIViewController {
+extension UIViewController {
     // it show alert controller on main window with ok button only
     class func showAlertMessage(withTitle title: String, withMessage message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -46,3 +53,4 @@ extension  UIViewController {
         })
     }
 }
+

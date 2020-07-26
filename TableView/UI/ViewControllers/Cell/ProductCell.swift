@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 
+
 class ProductCell : UITableViewCell {
     
     var product : Product? {
@@ -26,7 +27,7 @@ class ProductCell : UITableViewCell {
     private let productNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
-        lbl.font = UIFont.Medium(18)
+        lbl.font = UIFont.TitleFont()
         lbl.textAlignment = .left
         return lbl
     }()
@@ -35,7 +36,7 @@ class ProductCell : UITableViewCell {
     private let productDescriptionLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
-        lbl.font = UIFont.regular(14)
+        lbl.font = UIFont.DescriptionFont()
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
         return lbl
@@ -58,7 +59,7 @@ class ProductCell : UITableViewCell {
         contentView.addSubview(productImage)
         
         // To set cell minimum height. It will be used when either title or description or both are null
-        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 72).isActive = true
+        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: UIDevice.current.userInterfaceIdiom == .pad ? 108 : 72).isActive = true
         
         let marginGuide = contentView.layoutMarginsGuide
         
@@ -66,8 +67,8 @@ class ProductCell : UITableViewCell {
         productImage.contentMode = .scaleAspectFit
         productImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            productImage.widthAnchor.constraint(equalToConstant: 60),
-            productImage.heightAnchor.constraint(equalToConstant: 60),
+            productImage.widthAnchor.constraint(equalToConstant: UIDevice.current.userInterfaceIdiom == .pad ? FontSize.iPadImageWidthHeight.rawValue : FontSize.iPhoneImageWidthHeight.rawValue),
+            productImage.heightAnchor.constraint(equalToConstant:  UIDevice.current.userInterfaceIdiom == .pad ? FontSize.iPadImageWidthHeight.rawValue : FontSize.iPhoneImageWidthHeight.rawValue),
             productImage.topAnchor.constraint(equalTo: marginGuide.topAnchor, constant: -5),
             productImage.leftAnchor.constraint(equalTo: marginGuide.leftAnchor),
         ])
