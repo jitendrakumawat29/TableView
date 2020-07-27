@@ -32,7 +32,6 @@ class ProductViewModel {
             return (product.title != nil || product.description != nil) }
         return items?.count ?? 0
     }
-
     // Title of response
     func getTitle() -> String {
         return self.productResult?.title ?? ""
