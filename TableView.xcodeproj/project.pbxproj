@@ -27,6 +27,8 @@
 		7DA1FC4824C7615800BE4903 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FC4724C7615800BE4903 /* Assets.xcassets */; };
 		7DA1FC4E24C769A600BE4903 /* ProductWebServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1FC4A24C769A600BE4903 /* ProductWebServiceTest.swift */; };
 		7DA2C1CF24C74B5200E687D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2C1CE24C74B5200E687D0 /* AppDelegate.swift */; };
+		7DDD99C324D19AC3006E93EF /* MockProductWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDD99C124D19AC3006E93EF /* MockProductWebService.swift */; };
+		7DDD99C424D19AC3006E93EF /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDD99C224D19AC3006E93EF /* MockURLProtocol.swift */; };
 		B9E370C975EBF2AECE44F55A /* Pods_TableViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0917D70305329E432FE65DA9 /* Pods_TableViewTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		7DA2C1DC24C74B5400E687D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DA2C1E124C74B5400E687D0 /* TableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA2C1E724C74B5400E687D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DDD99C124D19AC3006E93EF /* MockProductWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockProductWebService.swift; sourceTree = "<group>"; };
+		7DDD99C224D19AC3006E93EF /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		7F6FEF80721165871A3E8FA1 /* Pods-TableViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewTests.release.xcconfig"; path = "Target Support Files/Pods-TableViewTests/Pods-TableViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		9360A99400EA87300FC51A56 /* Pods-TableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView.debug.xcconfig"; path = "Target Support Files/Pods-TableView/Pods-TableView.debug.xcconfig"; sourceTree = "<group>"; };
 		E927323CB9DE65B346222174 /* Pods-TableViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewTests.debug.xcconfig"; path = "Target Support Files/Pods-TableViewTests/Pods-TableViewTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,10 +252,20 @@
 		7DA2C1E424C74B5400E687D0 /* TableViewTests */ = {
 			isa = PBXGroup;
 			children = (
+				7DDD99C024D19AAC006E93EF /* Mock */,
 				7DA1FC4924C769A600BE4903 /* Network */,
 				7DA2C1E724C74B5400E687D0 /* Info.plist */,
 			);
 			path = TableViewTests;
+			sourceTree = "<group>";
+		};
+		7DDD99C024D19AAC006E93EF /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				7DDD99C124D19AC3006E93EF /* MockProductWebService.swift */,
+				7DDD99C224D19AC3006E93EF /* MockURLProtocol.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		ECAA94FA4AF78AB684F76265 /* Frameworks */ = {
@@ -453,6 +467,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DDD99C424D19AC3006E93EF /* MockURLProtocol.swift in Sources */,
+				7DDD99C324D19AC3006E93EF /* MockProductWebService.swift in Sources */,
 				7DA1FC4E24C769A600BE4903 /* ProductWebServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
