@@ -1,10 +1,4 @@
-//
-//  FontSize.swift
-//  TableView
-//
-//  Created by Jitendra Kumar on 26/07/20.
-//  Copyright © 2020 Jitendra Kumar. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
